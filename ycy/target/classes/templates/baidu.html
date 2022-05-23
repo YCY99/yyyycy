@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8" />
+	<title>学校定位</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+	<meta name="author" content="" />
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+
+	<!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" th:href="@{/css/map.css}" />
+	<!-- Demo Switcher
+	================================================== -->
+    <script  type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak= 5n9bL5rKhgqSko8VOQfWqqpcuhq58ujN" ></script>
+</head>
+
+
+<body>
+        <div class="baidu" id="baidu" >
+</div><!-- end outercontainer -->
+</body>
+<script>
+    let baidu=document.getElementById("baidu")
+    let map
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(myGPSfun)
+    }else {alert("您的浏览器不支持地理定位")}
+    function myGPSfun(e){
+        let jd=e.coords.longitude//经度获取
+        let wd=e.coords.latitude//纬度获取
+        console.log(jd)
+        console.log(wd)
+        map=new BMap.Map("baidu")
+        // let point=new BMap.Point(120.431111,30.4477777)
+        let point=new BMap.Point(jd,wd)
+        let convertor=new BMap.Convertor()
+        let pointarr=[]
+        pointarr.push(point)
+        convertor.translate(pointarr,1,5,translatecalback)
+    }
+    function du(){
+        navigator.geolocation.getCurrentPosition(shangbao)
+    }
+    function shangbao(e){
+        let jd=e.coords.longitude//经度获取
+        let wd=e.coords.latitude//纬度获取
+        alert("您目前所在经纬度为:"+"经度"+jd+" "+"纬度"+wd)
+    }
+    setInterval("du()","5000")
+    setInterval("shangbao()","50000")
+    function translatecalback(e){
+        if (e.status==0){
+            let marker=new BMap.Marker(e.points[0])
+            map.centerAndZoom(e.points[0],17)
+            map.addOverlay(marker)
+            var label = new BMap.Label("杨昌元",{offset:new BMap.Size(20,-10)});//标签
+            marker.setLabel(label)
+            marker.addEventListener("click",function (){
+                du()
+                shangbao()
+            })
+            map.enableScrollWheelZoom(true)
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8" />
+	<title>学校疫情防控</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+	<meta name="author" content="" />
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" th:href="@{/css/skeleton.css}" />
+    <link rel="stylesheet" th:href="@{/css/st.css}" />
+    <link rel="stylesheet" th:href="@{/css/flexslider.css}" />
+    <link rel="stylesheet" th:href="@{/css/color.css}" />
+	<link rel="stylesheet" th:href="@{/css/layout.css}" />
+	<!-- Demo Switcher
+	================================================== -->
+    <link id="layoutcss" th:href="@{/css/fixed-layout.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/style-switcher.css}" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+<div id="bodychild">
+	<div id="outercontainer">
+    
+        <!-- HEADER -->
+        <div id="outerheader">
+        	<div class="container">
+            <header id="top" class="twelve columns">
+            	<div id="logo"  class="three columns alpha"><img th:src="@{/img/logo.png}" alt=""></a></div>
+                <section id="navigation" class="nine columns omega">
+                    <nav>
+                        <ul id="topnav" class="sf-menu">
+                            <li class="current"><a th:href="@{/home}">主页</a></li>
+                            <li><a th:href="@{/message}">学生聚集信息</a></li>
+                            <li><a th:href="@{/msg}">学生位置</a></li>
+                        </ul><!-- topnav -->
+                    </nav><!-- nav -->	
+                    <div class="clear"></div>
+                </section>
+                <div class="clear"></div>
+            </header>
+            </div>
+        </div>
+        <!-- END HEADER -->
+        
+        <!-- SLIDER -->
+        <div id="outerslider">
+        	<div class="container">
+        	<div id="slidercontainer" class="twelve columns">
+            </div>
+            </div>
+        </div>
+        <!-- END SLIDER -->
+        
+        <!-- MAIN CONTENT -->
+        <div id="outermain">
+        	<div class="container">
+        	<section id="maincontent" class="twelve columns">
+            	<section id="content" class="positionleft eight columns alpha">
+                    <article>
+                        <h1 class="h1">Prevention<br>of Coronavirus <br>Disease 2020</h1>
+                    </article>
+                    <article>
+                        <div class="text">
+                            Maintain at least 1 metre (3 feet) distance between<br> yourself and anyone who is coughing or sneezing.
+                        </div>
+                    </article>
+				</section>
+                
+                <aside id="sidebar" class="positionright four columns omega">
+                <img class="pho" th:src="@{/img/logo2.png}">
+				</aside>	
+                <div class="clear"></div><!-- clear float --> 
+            </section>
+            </div>
+        </div>
+        <!-- END MAIN CONTENT -->
+        
+        <!-- AFTER CONTENT -->
+        <div id="outeraftercontent">
+            <div class="container">
+            <div id="aftercontent" class="twelve columns">
+                <section id="afterthecontent">
+                    <address class="addr">浙江机电疫情防控管理</br>telephone:0571-87773000</address>
+                </section>
+            </div>
+            </div>
+        </div>
+        <!-- END AFTER CONTENT -->
+        
+        <!-- FOOTER -->
+        <div id="outerfooter">
+        	<div class="container">
+        	<div id="footercontainer" class="twelve columns">
+            	<footer id="footer">滨江校区：浙江省杭州市滨江高教园滨文路528号 海宁校区：浙江海宁市长安镇青年路999号</a></footer>
+            </div>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+        
+	</div><!-- end bodychild -->
+</div><!-- end outercontainer -->
+<script>
+jQuery(window).load(function() {
+    jQuery('.flexslider').flexslider({
+          animation: "slide",              //String: Select your animation type, "fade" or "slide"
+		  slideDirection: "vertical",   //String: Select the sliding direction, "horizontal" or "vertical"
+		  directionNav: false, //Boolean: Create navigation for previous/next navigation? (true/false)
+		  controlNav: true  //Boolean: Create navigation for paging control of each clide? Note: Leave true for manualControls usage
+        });
+});
+</script>
+</body>
+</html>
